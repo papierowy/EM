@@ -12,7 +12,7 @@ namespace EM.Web.Views
             {
                 return true;
             }
-            
+
             if (UrlWithProtocolRegex.IsMatch(url))
             {
                 return true;

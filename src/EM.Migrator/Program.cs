@@ -27,7 +27,7 @@ namespace EM.Migrator
                 using (var migrateExecuter = bootstrapper.IocManager.ResolveAsDisposable<MultiTenantMigrateExecuter>())
                 {
                     var migrationSucceeded = migrateExecuter.Object.Run(_quietMode);
-                    
+
                     if (_quietMode)
                     {
                         // exit clean (with exit code 0) if migration is a success, otherwise exit with code 1

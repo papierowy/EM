@@ -11,12 +11,12 @@ namespace EM.Identity
     public class SecurityStampValidator : AbpSecurityStampValidator<Tenant, Role, User>
     {
         public SecurityStampValidator(
-            IOptions<SecurityStampValidatorOptions> options, 
+            IOptions<SecurityStampValidatorOptions> options,
             SignInManager signInManager,
-            ISystemClock systemClock) 
+            ISystemClock systemClock)
             : base(
-                  options, 
-                  signInManager, 
+                  options,
+                  signInManager,
                   systemClock)
         {
         }

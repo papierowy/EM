@@ -28,23 +28,23 @@ namespace EM.MultiTenancy
         private readonly IPasswordHasher<User> _passwordHasher;
 
         public TenantAppService(
-            IRepository<Tenant, int> repository, 
-            TenantManager tenantManager, 
+            IRepository<Tenant, int> repository,
+            TenantManager tenantManager,
             EditionManager editionManager,
-            UserManager userManager,            
-            RoleManager roleManager, 
-            IAbpZeroDbMigrator abpZeroDbMigrator, 
-            IPasswordHasher<User> passwordHasher) 
+            UserManager userManager,
+            RoleManager roleManager,
+            IAbpZeroDbMigrator abpZeroDbMigrator,
+            IPasswordHasher<User> passwordHasher)
             : base(repository)
         {
-            _tenantManager = tenantManager; 
+            _tenantManager = tenantManager;
             _editionManager = editionManager;
             _userManager = userManager;
             _roleManager = roleManager;
             _abpZeroDbMigrator = abpZeroDbMigrator;
             _passwordHasher = passwordHasher;
         }
-        
+
         public override async Task<TenantDto> Create(CreateTenantDto input)
         {
             CheckCreatePermission();

@@ -6,7 +6,7 @@ using EM.Authorization;
 namespace EM
 {
     [DependsOn(
-        typeof(EMCoreModule), 
+        typeof(EMCoreModule),
         typeof(AbpAutoMapperModule))]
     public class EMApplicationModule : AbpModule
     {

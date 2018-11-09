@@ -194,7 +194,7 @@ namespace EM.Web.Controllers
                 if (model.IsExternalLogin)
                 {
                     Debug.Assert(externalLoginInfo != null);
-                    
+
                     if (string.Equals(externalLoginInfo.Principal.FindFirstValue(ClaimTypes.Email), model.EmailAddress, StringComparison.OrdinalIgnoreCase))
                     {
                         user.IsEmailConfirmed = true;
@@ -289,7 +289,7 @@ namespace EM.Web.Controllers
         public virtual async Task<ActionResult> ExternalLoginCallback(string returnUrl, string remoteError = null)
         {
             returnUrl = NormalizeReturnUrl(returnUrl);
-            
+
             if (remoteError != null)
             {
                 Logger.Error("Remote Error in ExternalLoginCallback: " + remoteError);

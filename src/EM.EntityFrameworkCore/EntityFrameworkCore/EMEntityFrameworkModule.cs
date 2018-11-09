@@ -7,7 +7,7 @@ using EM.EntityFrameworkCore.Seed;
 namespace EM.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(EMCoreModule), 
+        typeof(EMCoreModule),
         typeof(AbpZeroCoreEntityFrameworkCoreModule))]
     public class EMEntityFrameworkModule : AbpModule
     {

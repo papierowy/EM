@@ -16,7 +16,7 @@ namespace EM.Web.Startup
                     .AddJwtBearer(options =>
                     {
                         options.Audience = configuration["Authentication:JwtBearer:Audience"];
-                        
+
                         options.TokenValidationParameters = new TokenValidationParameters
                         {
                             // The signing key must match!
@@ -38,7 +38,7 @@ namespace EM.Web.Startup
                             ClockSkew = TimeSpan.Zero
                         };
                     });
-                
+
             }
         }
     }

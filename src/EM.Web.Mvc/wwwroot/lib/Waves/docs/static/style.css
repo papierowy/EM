@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -24,7 +24,7 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -51,7 +51,7 @@ table {
  * Structure
  */
 body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     background:#fff;
     color: #333;
@@ -63,9 +63,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
 
-a, 
-a:hover, 
-a:active, 
+a,
+a:hover,
+a:active,
 a:visited {
     cursor:pointer;
     color:#01bcff;
@@ -579,13 +579,13 @@ hr {
         width: 300px;
         font-size: 40px;
     }
-    
+
     #example.show .box {
         width: 400px !important;
         left: 50% !important;
         margin-left: -200px !important;
     }
-    
+
     #example #box-button {
         top: -200px;
     }
@@ -680,13 +680,13 @@ hr {
         width: 240px;
         font-size: 40px;
     }
-    
+
     #example.show .box {
         width: 300px !important;
         left: 50% !important;
         margin-left: -150px !important;
     }
-    
+
     #example.show #box-button {
         top: 150px;
     }
