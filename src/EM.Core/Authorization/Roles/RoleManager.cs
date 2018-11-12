@@ -10,28 +10,28 @@ using EM.Authorization.Users;
 
 namespace EM.Authorization.Roles
 {
-    public class RoleManager : AbpRoleManager<Role, User>
-    {
-        public RoleManager(
-            RoleStore store,
-            IEnumerable<IRoleValidator<Role>> roleValidators,
-            ILookupNormalizer keyNormalizer,
-            IdentityErrorDescriber errors,
-            ILogger<AbpRoleManager<Role, User>> logger,
-            IPermissionManager permissionManager,
-            ICacheManager cacheManager,
-            IUnitOfWorkManager unitOfWorkManager,
-            IRoleManagementConfig roleManagementConfig)
-            : base(
-                  store,
-                  roleValidators,
-                  keyNormalizer,
-                  errors, logger,
-                  permissionManager,
-                  cacheManager,
-                  unitOfWorkManager,
-                  roleManagementConfig)
-        {
-        }
-    }
+   public class RoleManager : AbpRoleManager<Role, User>
+   {
+      public RoleManager(
+         RoleStore store,
+         IEnumerable<IRoleValidator<Role>> roleValidators,
+         ILookupNormalizer keyNormalizer,
+         IdentityErrorDescriber errors,
+         ILogger<AbpRoleManager<Role, User>> logger,
+         IPermissionManager permissionManager,
+         ICacheManager cacheManager,
+         IUnitOfWorkManager unitOfWorkManager,
+         IRoleManagementConfig roleManagementConfig)
+         : base(
+            store,
+            roleValidators,
+            keyNormalizer,
+            errors, logger,
+            permissionManager,
+            cacheManager,
+            unitOfWorkManager,
+            roleManagementConfig)
+      {
+      }
+   }
 }

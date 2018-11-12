@@ -2,11 +2,11 @@
 
 namespace EM.Web.Views
 {
-    public abstract class EMViewComponent : AbpViewComponent
-    {
-        protected EMViewComponent()
-        {
-            LocalizationSourceName = EMConsts.LocalizationSourceName;
-        }
-    }
+   public abstract class EMViewComponent : AbpViewComponent
+   {
+      protected EMViewComponent()
+      {
+         LocalizationSourceName = EMConsts.LocalizationSourceName;
+      }
+   }
 }

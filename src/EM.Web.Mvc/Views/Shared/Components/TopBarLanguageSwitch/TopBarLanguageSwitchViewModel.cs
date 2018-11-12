@@ -3,10 +3,10 @@ using Abp.Localization;
 
 namespace EM.Web.Views.Shared.Components.TopBarLanguageSwitch
 {
-    public class TopBarLanguageSwitchViewModel
-    {
-        public LanguageInfo CurrentLanguage { get; set; }
+   public class TopBarLanguageSwitchViewModel
+   {
+      public LanguageInfo CurrentLanguage { get; set; }
 
-        public IReadOnlyList<LanguageInfo> Languages { get; set; }
-    }
+      public IReadOnlyList<LanguageInfo> Languages { get; set; }
+   }
 }

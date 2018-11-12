@@ -3,10 +3,10 @@ using Abp.MultiTenancy;
 
 namespace EM.Authorization.Accounts.Dto
 {
-    public class IsTenantAvailableInput
-    {
-        [Required]
-        [StringLength(AbpTenantBase.MaxTenancyNameLength)]
-        public string TenancyName { get; set; }
-    }
+   public class IsTenantAvailableInput
+   {
+      [Required]
+      [StringLength(AbpTenantBase.MaxTenancyNameLength)]
+      public string TenancyName { get; set; }
+   }
 }

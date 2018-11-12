@@ -3,8 +3,8 @@ using EM.Configuration.Dto;
 
 namespace EM.Configuration
 {
-    public interface IConfigurationAppService
-    {
-        Task ChangeUiTheme(ChangeUiThemeInput input);
-    }
+   public interface IConfigurationAppService
+   {
+      Task ChangeUiTheme(ChangeUiThemeInput input);
+   }
 }

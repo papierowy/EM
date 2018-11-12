@@ -5,48 +5,49 @@ using Abp.Localization;
 
 namespace EM.EntityFrameworkCore.Seed.Host
 {
-    public class DefaultLanguagesCreator
-    {
-        public static List<ApplicationLanguage> InitialLanguages => GetInitialLanguages();
+   public class DefaultLanguagesCreator
+   {
+      public static List<ApplicationLanguage> InitialLanguages => GetInitialLanguages();
 
-        private readonly EMDbContext _context;
+      private readonly EMDbContext _context;
 
-        private static List<ApplicationLanguage> GetInitialLanguages()
-        {
-            return new List<ApplicationLanguage>
-            {
-               new ApplicationLanguage(null, "en", "English", "famfamfam-flags gb"),
-               new ApplicationLanguage(null, "pl", "Polski", "famfamfam-flags pl")
-            };
-        }
+      private static List<ApplicationLanguage> GetInitialLanguages()
+      {
+         return new List<ApplicationLanguage>
+         {
+            new ApplicationLanguage(null, "en", "English", "famfamfam-flags gb"),
+            new ApplicationLanguage(null, "pl", "Polski", "famfamfam-flags pl")
+         };
+      }
 
-        public DefaultLanguagesCreator(EMDbContext context)
-        {
-            _context = context;
-        }
+      public DefaultLanguagesCreator(EMDbContext context)
+      {
+         _context = context;
+      }
 
-        public void Create()
-        {
-            CreateLanguages();
-        }
+      public void Create()
+      {
+         CreateLanguages();
+      }
 
-        private void CreateLanguages()
-        {
-            foreach (var language in InitialLanguages)
-            {
-                AddLanguageIfNotExists(language);
-            }
-        }
+      private void CreateLanguages()
+      {
+         foreach (var language in InitialLanguages)
+         {
+            AddLanguageIfNotExists(language);
+         }
+      }
 
-        private void AddLanguageIfNotExists(ApplicationLanguage language)
-        {
-            if (_context.Languages.IgnoreQueryFilters().Any(l => l.TenantId == language.TenantId && l.Name == language.Name))
-            {
-                return;
-            }
+      private void AddLanguageIfNotExists(ApplicationLanguage language)
+      {
+         if (_context.Languages.IgnoreQueryFilters()
+            .Any(l => l.TenantId == language.TenantId && l.Name == language.Name))
+         {
+            return;
+         }
 
-            _context.Languages.Add(language);
-            _context.SaveChanges();
-        }
-    }
+         _context.Languages.Add(language);
+         _context.SaveChanges();
+      }
+   }
 }

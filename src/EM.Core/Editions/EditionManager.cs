@@ -4,17 +4,17 @@ using Abp.Domain.Repositories;
 
 namespace EM.Editions
 {
-    public class EditionManager : AbpEditionManager
-    {
-        public const string DefaultEditionName = "Standard";
+   public class EditionManager : AbpEditionManager
+   {
+      public const string DefaultEditionName = "Standard";
 
-        public EditionManager(
-            IRepository<Edition> editionRepository,
-            IAbpZeroFeatureValueStore featureValueStore)
-            : base(
-                editionRepository,
-                featureValueStore)
-        {
-        }
-    }
+      public EditionManager(
+         IRepository<Edition> editionRepository,
+         IAbpZeroFeatureValueStore featureValueStore)
+         : base(
+            editionRepository,
+            featureValueStore)
+      {
+      }
+   }
 }

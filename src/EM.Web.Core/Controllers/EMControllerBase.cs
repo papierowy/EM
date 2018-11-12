@@ -4,16 +4,16 @@ using Microsoft.AspNetCore.Identity;
 
 namespace EM.Controllers
 {
-    public abstract class EMControllerBase: AbpController
-    {
-        protected EMControllerBase()
-        {
-            LocalizationSourceName = EMConsts.LocalizationSourceName;
-        }
+   public abstract class EMControllerBase : AbpController
+   {
+      protected EMControllerBase()
+      {
+         LocalizationSourceName = EMConsts.LocalizationSourceName;
+      }
 
-        protected void CheckErrors(IdentityResult identityResult)
-        {
-            identityResult.CheckErrors(LocalizationManager);
-        }
-    }
+      protected void CheckErrors(IdentityResult identityResult)
+      {
+         identityResult.CheckErrors(LocalizationManager);
+      }
+   }
 }

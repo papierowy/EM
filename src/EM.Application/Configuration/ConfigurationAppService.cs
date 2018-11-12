@@ -5,12 +5,13 @@ using EM.Configuration.Dto;
 
 namespace EM.Configuration
 {
-    [AbpAuthorize]
-    public class ConfigurationAppService : EMAppServiceBase, IConfigurationAppService
-    {
-        public async Task ChangeUiTheme(ChangeUiThemeInput input)
-        {
-            await SettingManager.ChangeSettingForUserAsync(AbpSession.ToUserIdentifier(), AppSettingNames.UiTheme, input.Theme);
-        }
-    }
+   [AbpAuthorize]
+   public class ConfigurationAppService : EMAppServiceBase, IConfigurationAppService
+   {
+      public async Task ChangeUiTheme(ChangeUiThemeInput input)
+      {
+         await SettingManager.ChangeSettingForUserAsync(AbpSession.ToUserIdentifier(), AppSettingNames.UiTheme,
+            input.Theme);
+      }
+   }
 }

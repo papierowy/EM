@@ -6,34 +6,35 @@ using Abp.Net.Mail;
 
 namespace EM.EntityFrameworkCore.Seed.Host
 {
-    public class DefaultSettingsCreator
-    {
-        private readonly EMDbContext _context;
+   public class DefaultSettingsCreator
+   {
+      private readonly EMDbContext _context;
 
-        public DefaultSettingsCreator(EMDbContext context)
-        {
-            _context = context;
-        }
+      public DefaultSettingsCreator(EMDbContext context)
+      {
+         _context = context;
+      }
 
-        public void Create()
-        {
-            // Emailing
-            AddSettingIfNotExists(EmailSettingNames.DefaultFromAddress, "admin@mydomain.com");
-            AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "mydomain.com mailer");
+      public void Create()
+      {
+         // Emailing
+         AddSettingIfNotExists(EmailSettingNames.DefaultFromAddress, "admin@mydomain.com");
+         AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "mydomain.com mailer");
 
-            // Languages
-            AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "pl");
-        }
+         // Languages
+         AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "pl");
+      }
 
-        private void AddSettingIfNotExists(string name, string value, int? tenantId = null)
-        {
-            if (_context.Settings.IgnoreQueryFilters().Any(s => s.Name == name && s.TenantId == tenantId && s.UserId == null))
-            {
-                return;
-            }
+      private void AddSettingIfNotExists(string name, string value, int? tenantId = null)
+      {
+         if (_context.Settings.IgnoreQueryFilters()
+            .Any(s => s.Name == name && s.TenantId == tenantId && s.UserId == null))
+         {
+            return;
+         }
 
-            _context.Settings.Add(new Setting(tenantId, null, name, value));
-            _context.SaveChanges();
-        }
-    }
+         _context.Settings.Add(new Setting(tenantId, null, name, value));
+         _context.SaveChanges();
+      }
+   }
 }

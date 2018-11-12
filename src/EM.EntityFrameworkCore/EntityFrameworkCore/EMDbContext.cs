@@ -6,13 +6,13 @@ using EM.MultiTenancy;
 
 namespace EM.EntityFrameworkCore
 {
-    public class EMDbContext : AbpZeroDbContext<Tenant, Role, User, EMDbContext>
-    {
-        /* Define a DbSet for each entity of the application */
+   public class EMDbContext : AbpZeroDbContext<Tenant, Role, User, EMDbContext>
+   {
+      /* Define a DbSet for each entity of the application */
 
-        public EMDbContext(DbContextOptions<EMDbContext> options)
-            : base(options)
-        {
-        }
-    }
+      public EMDbContext(DbContextOptions<EMDbContext> options)
+         : base(options)
+      {
+      }
+   }
 }

@@ -253,4 +253,4 @@ paket-files/
 
 /src/*Web.Mvc/App_Data/Logs/Logs.txt
 /build/outputs
-/sql/EM.db
+/sql/*.db

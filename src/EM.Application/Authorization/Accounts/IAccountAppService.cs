@@ -4,10 +4,10 @@ using EM.Authorization.Accounts.Dto;
 
 namespace EM.Authorization.Accounts
 {
-    public interface IAccountAppService : IApplicationService
-    {
-        Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input);
+   public interface IAccountAppService : IApplicationService
+   {
+      Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input);
 
-        Task<RegisterOutput> Register(RegisterInput input);
-    }
+      Task<RegisterOutput> Register(RegisterInput input);
+   }
 }

@@ -8,17 +8,17 @@ using EM.MultiTenancy;
 
 namespace EM.Identity
 {
-    public class SecurityStampValidator : AbpSecurityStampValidator<Tenant, Role, User>
-    {
-        public SecurityStampValidator(
-            IOptions<SecurityStampValidatorOptions> options,
-            SignInManager signInManager,
-            ISystemClock systemClock)
-            : base(
-                  options,
-                  signInManager,
-                  systemClock)
-        {
-        }
-    }
+   public class SecurityStampValidator : AbpSecurityStampValidator<Tenant, Role, User>
+   {
+      public SecurityStampValidator(
+         IOptions<SecurityStampValidatorOptions> options,
+         SignInManager signInManager,
+         ISystemClock systemClock)
+         : base(
+            options,
+            signInManager,
+            systemClock)
+      {
+      }
+   }
 }

@@ -5,27 +5,27 @@ using Abp.Localization;
 
 namespace EM.Web.Views.Shared.Components.AccountLanguages
 {
-    public class AccountLanguagesViewComponent : EMViewComponent
-    {
-        private readonly ILanguageManager _languageManager;
+   public class AccountLanguagesViewComponent : EMViewComponent
+   {
+      private readonly ILanguageManager _languageManager;
 
-        public AccountLanguagesViewComponent(ILanguageManager languageManager)
-        {
-            _languageManager = languageManager;
-        }
+      public AccountLanguagesViewComponent(ILanguageManager languageManager)
+      {
+         _languageManager = languageManager;
+      }
 
-        public Task<IViewComponentResult> InvokeAsync()
-        {
-            var model = new LanguageSelectionViewModel
-            {
-                CurrentLanguage = _languageManager.CurrentLanguage,
-                Languages = _languageManager.GetLanguages().Where(l => !l.IsDisabled).ToList()
-                .Where(l => !l.IsDisabled)
-                .ToList(),
-                CurrentUrl = Request.Path
-            };
+      public Task<IViewComponentResult> InvokeAsync()
+      {
+         var model = new LanguageSelectionViewModel
+         {
+            CurrentLanguage = _languageManager.CurrentLanguage,
+            Languages = _languageManager.GetLanguages().Where(l => !l.IsDisabled).ToList()
+               .Where(l => !l.IsDisabled)
+               .ToList(),
+            CurrentUrl = Request.Path
+         };
 
-            return Task.FromResult(View(model) as IViewComponentResult);
-        }
-    }
+         return Task.FromResult(View(model) as IViewComponentResult);
+      }
+   }
 }

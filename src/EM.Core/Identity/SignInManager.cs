@@ -12,27 +12,27 @@ using EM.MultiTenancy;
 
 namespace EM.Identity
 {
-    public class SignInManager : AbpSignInManager<Tenant, Role, User>
-    {
-        public SignInManager(
-            UserManager userManager,
-            IHttpContextAccessor contextAccessor,
-            UserClaimsPrincipalFactory claimsFactory,
-            IOptions<IdentityOptions> optionsAccessor,
-            ILogger<SignInManager<User>> logger,
-            IUnitOfWorkManager unitOfWorkManager,
-            ISettingManager settingManager,
-            IAuthenticationSchemeProvider schemes)
-            : base(
-                userManager,
-                contextAccessor,
-                claimsFactory,
-                optionsAccessor,
-                logger,
-                unitOfWorkManager,
-                settingManager,
-                schemes)
-        {
-        }
-    }
+   public class SignInManager : AbpSignInManager<Tenant, Role, User>
+   {
+      public SignInManager(
+         UserManager userManager,
+         IHttpContextAccessor contextAccessor,
+         UserClaimsPrincipalFactory claimsFactory,
+         IOptions<IdentityOptions> optionsAccessor,
+         ILogger<SignInManager<User>> logger,
+         IUnitOfWorkManager unitOfWorkManager,
+         ISettingManager settingManager,
+         IAuthenticationSchemeProvider schemes)
+         : base(
+            userManager,
+            contextAccessor,
+            claimsFactory,
+            optionsAccessor,
+            logger,
+            unitOfWorkManager,
+            settingManager,
+            schemes)
+      {
+      }
+   }
 }

@@ -4,8 +4,8 @@ using EM.Sessions.Dto;
 
 namespace EM.Sessions
 {
-    public interface ISessionAppService : IApplicationService
-    {
-        Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations();
-    }
+   public interface ISessionAppService : IApplicationService
+   {
+      Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations();
+   }
 }

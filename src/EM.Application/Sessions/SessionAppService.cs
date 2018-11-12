@@ -5,32 +5,32 @@ using EM.Sessions.Dto;
 
 namespace EM.Sessions
 {
-    public class SessionAppService : EMAppServiceBase, ISessionAppService
-    {
-        [DisableAuditing]
-        public async Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations()
-        {
-            var output = new GetCurrentLoginInformationsOutput
+   public class SessionAppService : EMAppServiceBase, ISessionAppService
+   {
+      [DisableAuditing]
+      public async Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations()
+      {
+         var output = new GetCurrentLoginInformationsOutput
+         {
+            Application = new ApplicationInfoDto
             {
-                Application = new ApplicationInfoDto
-                {
-                    Version = AppVersionHelper.Version,
-                    ReleaseDate = AppVersionHelper.ReleaseDate,
-                    Features = new Dictionary<string, bool>()
-                }
-            };
-
-            if (AbpSession.TenantId.HasValue)
-            {
-                output.Tenant = ObjectMapper.Map<TenantLoginInfoDto>(await GetCurrentTenantAsync());
+               Version = AppVersionHelper.Version,
+               ReleaseDate = AppVersionHelper.ReleaseDate,
+               Features = new Dictionary<string, bool>()
             }
+         };
 
-            if (AbpSession.UserId.HasValue)
-            {
-                output.User = ObjectMapper.Map<UserLoginInfoDto>(await GetCurrentUserAsync());
-            }
+         if (AbpSession.TenantId.HasValue)
+         {
+            output.Tenant = ObjectMapper.Map<TenantLoginInfoDto>(await GetCurrentTenantAsync());
+         }
 
-            return output;
-        }
-    }
+         if (AbpSession.UserId.HasValue)
+         {
+            output.User = ObjectMapper.Map<UserLoginInfoDto>(await GetCurrentUserAsync());
+         }
+
+         return output;
+      }
+   }
 }

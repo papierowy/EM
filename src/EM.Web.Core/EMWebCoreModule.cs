@@ -15,55 +15,58 @@ using EM.EntityFrameworkCore;
 
 namespace EM
 {
-    [DependsOn(
-         typeof(EMApplicationModule),
-         typeof(EMEntityFrameworkModule),
-         typeof(AbpAspNetCoreModule)
-        ,typeof(AbpAspNetCoreSignalRModule)
-     )]
-    public class EMWebCoreModule : AbpModule
-    {
-        private readonly IHostingEnvironment _env;
-        private readonly IConfigurationRoot _appConfiguration;
+   [DependsOn(
+      typeof(EMApplicationModule),
+      typeof(EMEntityFrameworkModule),
+      typeof(AbpAspNetCoreModule)
+      , typeof(AbpAspNetCoreSignalRModule)
+   )]
+   public class EMWebCoreModule : AbpModule
+   {
+      private readonly IHostingEnvironment _env;
+      private readonly IConfigurationRoot _appConfiguration;
 
-        public EMWebCoreModule(IHostingEnvironment env)
-        {
-            _env = env;
-            _appConfiguration = env.GetAppConfiguration();
-        }
+      public EMWebCoreModule(IHostingEnvironment env)
+      {
+         _env = env;
+         _appConfiguration = env.GetAppConfiguration();
+      }
 
-        public override void PreInitialize()
-        {
-            Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
-                EMConsts.ConnectionStringName
+      public override void PreInitialize()
+      {
+         Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
+            EMConsts.ConnectionStringName
+         );
+
+         // Use database for language management
+         Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
+
+         Configuration.Modules.AbpAspNetCore()
+            .CreateControllersForAppServices(
+               typeof(EMApplicationModule).GetAssembly()
             );
 
-            // Use database for language management
-            Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
+         ConfigureTokenAuth();
+      }
 
-            Configuration.Modules.AbpAspNetCore()
-                 .CreateControllersForAppServices(
-                     typeof(EMApplicationModule).GetAssembly()
-                 );
+      private void ConfigureTokenAuth()
+      {
+         IocManager.Register<TokenAuthConfiguration>();
+         var tokenAuthConfig = IocManager.Resolve<TokenAuthConfiguration>();
 
-            ConfigureTokenAuth();
-        }
+         tokenAuthConfig.SecurityKey =
+            new SymmetricSecurityKey(
+               Encoding.ASCII.GetBytes(_appConfiguration["Authentication:JwtBearer:SecurityKey"]));
+         tokenAuthConfig.Issuer = _appConfiguration["Authentication:JwtBearer:Issuer"];
+         tokenAuthConfig.Audience = _appConfiguration["Authentication:JwtBearer:Audience"];
+         tokenAuthConfig.SigningCredentials =
+            new SigningCredentials(tokenAuthConfig.SecurityKey, SecurityAlgorithms.HmacSha256);
+         tokenAuthConfig.Expiration = TimeSpan.FromDays(1);
+      }
 
-        private void ConfigureTokenAuth()
-        {
-            IocManager.Register<TokenAuthConfiguration>();
-            var tokenAuthConfig = IocManager.Resolve<TokenAuthConfiguration>();
-
-            tokenAuthConfig.SecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_appConfiguration["Authentication:JwtBearer:SecurityKey"]));
-            tokenAuthConfig.Issuer = _appConfiguration["Authentication:JwtBearer:Issuer"];
-            tokenAuthConfig.Audience = _appConfiguration["Authentication:JwtBearer:Audience"];
-            tokenAuthConfig.SigningCredentials = new SigningCredentials(tokenAuthConfig.SecurityKey, SecurityAlgorithms.HmacSha256);
-            tokenAuthConfig.Expiration = TimeSpan.FromDays(1);
-        }
-
-        public override void Initialize()
-        {
-            IocManager.RegisterAssemblyByConvention(typeof(EMWebCoreModule).GetAssembly());
-        }
-    }
+      public override void Initialize()
+      {
+         IocManager.RegisterAssemblyByConvention(typeof(EMWebCoreModule).GetAssembly());
+      }
+   }
 }

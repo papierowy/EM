@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace EM.Web.Resources
 {
-    public interface IWebResourceManager
-    {
-        void AddScript(string url, bool addMinifiedOnProd = true);
+   public interface IWebResourceManager
+   {
+      void AddScript(string url, bool addMinifiedOnProd = true);
 
-        IReadOnlyList<string> GetScripts();
+      IReadOnlyList<string> GetScripts();
 
-        HelperResult RenderScripts();
-    }
+      HelperResult RenderScripts();
+   }
 }

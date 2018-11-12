@@ -4,11 +4,11 @@ using EM.Authorization.Users;
 
 namespace EM.Authorization
 {
-    public class PermissionChecker : PermissionChecker<Role, User>
-    {
-        public PermissionChecker(UserManager userManager)
-            : base(userManager)
-        {
-        }
-    }
+   public class PermissionChecker : PermissionChecker<Role, User>
+   {
+      public PermissionChecker(UserManager userManager)
+         : base(userManager)
+      {
+      }
+   }
 }

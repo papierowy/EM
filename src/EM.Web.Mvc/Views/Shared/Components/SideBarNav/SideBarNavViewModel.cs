@@ -2,10 +2,10 @@
 
 namespace EM.Web.Views.Shared.Components.SideBarNav
 {
-    public class SideBarNavViewModel
-    {
-        public UserMenu MainMenu { get; set; }
+   public class SideBarNavViewModel
+   {
+      public UserMenu MainMenu { get; set; }
 
-        public string ActiveMenuItemName { get; set; }
-    }
+      public string ActiveMenuItemName { get; set; }
+   }
 }

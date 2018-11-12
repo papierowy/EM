@@ -9,39 +9,39 @@ using EM.Migrator.DependencyInjection;
 
 namespace EM.Migrator
 {
-    [DependsOn(typeof(EMEntityFrameworkModule))]
-    public class EMMigratorModule : AbpModule
-    {
-        private readonly IConfigurationRoot _appConfiguration;
+   [DependsOn(typeof(EMEntityFrameworkModule))]
+   public class EMMigratorModule : AbpModule
+   {
+      private readonly IConfigurationRoot _appConfiguration;
 
-        public EMMigratorModule(EMEntityFrameworkModule abpProjectNameEntityFrameworkModule)
-        {
-            abpProjectNameEntityFrameworkModule.SkipDbSeed = true;
+      public EMMigratorModule(EMEntityFrameworkModule abpProjectNameEntityFrameworkModule)
+      {
+         abpProjectNameEntityFrameworkModule.SkipDbSeed = true;
 
-            _appConfiguration = AppConfigurations.Get(
-                typeof(EMMigratorModule).GetAssembly().GetDirectoryPathOrNull()
-            );
-        }
+         _appConfiguration = AppConfigurations.Get(
+            typeof(EMMigratorModule).GetAssembly().GetDirectoryPathOrNull()
+         );
+      }
 
-        public override void PreInitialize()
-        {
-            Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
-                EMConsts.ConnectionStringName
-            );
+      public override void PreInitialize()
+      {
+         Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
+            EMConsts.ConnectionStringName
+         );
 
-            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
-            Configuration.ReplaceService(
-                typeof(IEventBus),
-                () => IocManager.IocContainer.Register(
-                    Component.For<IEventBus>().Instance(NullEventBus.Instance)
-                )
-            );
-        }
+         Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
+         Configuration.ReplaceService(
+            typeof(IEventBus),
+            () => IocManager.IocContainer.Register(
+               Component.For<IEventBus>().Instance(NullEventBus.Instance)
+            )
+         );
+      }
 
-        public override void Initialize()
-        {
-            IocManager.RegisterAssemblyByConvention(typeof(EMMigratorModule).GetAssembly());
-            ServiceCollectionRegistrar.Register(IocManager);
-        }
-    }
+      public override void Initialize()
+      {
+         IocManager.RegisterAssemblyByConvention(typeof(EMMigratorModule).GetAssembly());
+         ServiceCollectionRegistrar.Register(IocManager);
+      }
+   }
 }

@@ -3,20 +3,20 @@
 @using EM.Web.Views.Shared.Components.TenantChange
 @model ChangeModalViewModel
 @{
-    Layout = null;
+   Layout = null;
 }
 @Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("ChangeTenant")))
 
 <div class="modal-body">
-    <form name="TenantChangeForm" role="form" novalidate class="form-validation">
-        <div class="form-group form-float">
-            <div class="form-line">
-                <input class="form-control" type="text" name="TenancyName" maxlength="@AbpTenantBase.MaxTenancyNameLength" value="@Model.TenancyName">
-                <label class="form-label">@L("TenancyName")</label>
-            </div>
-        </div>
-        <span class="help-block">@L("LeaveEmptyToSwitchToHost")</span>
-    </form>
+   <form name="TenantChangeForm" role="form" novalidate class="form-validation">
+      <div class="form-group form-float">
+         <div class="form-line">
+            <input class="form-control" type="text" name="TenancyName" maxlength="@AbpTenantBase.MaxTenancyNameLength" value="@Model.TenancyName">
+            <label class="form-label">@L("TenancyName")</label>
+         </div>
+      </div>
+      <span class="help-block">@L("LeaveEmptyToSwitchToHost")</span>
+   </form>
 </div>
 
 @Html.Partial("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
